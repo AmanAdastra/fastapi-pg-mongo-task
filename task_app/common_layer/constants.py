@@ -25,6 +25,7 @@ PROFILE_PICTURE_ADDED = "Profile Picture added successfully"
 HEALTH_CHECK = "Health Check Completed"
 USER_NOT_FOUND = "User not found, Please check the entered user id"
 USER_DATA_FETCHED = "User data fetched successfully"
+PROCESS_FAILED = "Process Failed"
 
 
 # Database Model Names
