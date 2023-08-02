@@ -62,6 +62,8 @@ Ensure that all the above variables are correctly filled in the `.env` file befo
 
 To run the FastAPI application, follow these steps:
 
+Application OS: Linux/Mac
+
 1. Install the required dependencies by running:
 
 `python version 3.11.4`
@@ -73,6 +75,7 @@ To run the FastAPI application, follow these steps:
 
 
 Now, you should have the FastAPI application up and running, and you can test the endpoints using OpenAPI/ Swagger
+at: `0.0.0.0:4006/docs`
 
-Please note that this Readme is a general template and may need to be adapted based on your specific project structure and configuration details. Make sure to update it accordingly.
+Inorder to Run this App on Windows Change 0.0.0.0 in `application.py` file to `localhost`
 
