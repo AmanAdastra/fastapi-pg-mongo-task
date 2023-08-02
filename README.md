@@ -62,6 +62,8 @@ Ensure that all the above variables are correctly filled in the `.env` file befo
 
 To run the FastAPI application, follow these steps:
 
+Go to task_app Work Directory to run the below commands
+
 Application OS: Linux/Mac
 
 1. Install the required dependencies by running:
