@@ -15,7 +15,7 @@ This repository contains a FastAPI application that allows users to register, up
    - Request Body:
       ```json
       {
-        "full_name": "John Doe",
+        "fullname": "John Doe",
         "email": "johndoe@example.com",
         "password": "mypassword",
         "phone": "1234567890",
