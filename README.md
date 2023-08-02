@@ -79,3 +79,4 @@ at: `0.0.0.0:4006/docs`
 
 Inorder to Run this App on Windows Change 0.0.0.0 in `application.py` file to `localhost`
 
+You can verify the Base 64 Image at (Copy the content between quotes and paste in the Input box of the website) : https://base64.guru/converter/decode/image

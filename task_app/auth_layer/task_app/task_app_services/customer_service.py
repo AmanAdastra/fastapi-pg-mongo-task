@@ -137,10 +137,15 @@ def get_user_details(user_id: int):
             for row in conn.execute(statement):
                 row_user_id = row[0]
                 if user_id == row_user_id:
-                    user_data = [
-                        *row[:4],
-                        user_profile_index.get(constants.PROFILE_IMAGE_FIELD),
-                    ]
+                    user_data = {
+                        constants.USER_ID_FIELD: row[0],
+                        constants.FULLNAME_FIELD: row[1],
+                        constants.EMAIL_FIELD: row[2],
+                        constants.PASSWORD_FIELD: row[3],
+                        constants.PROFILE_IMAGE_FIELD: user_profile_index.get(
+                            constants.PROFILE_IMAGE_FIELD
+                        ),
+                    }
 
         response = ResponseMessage(
             type=constants.HTTP_RESPONSE_SUCCESS,
