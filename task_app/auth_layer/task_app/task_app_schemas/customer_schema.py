@@ -15,7 +15,6 @@ class User(Base):
     email: Mapped[EmailStr] = mapped_column(String(40))
     password: Mapped[str] = mapped_column(String(100))
     phone: Mapped[int] = mapped_column(BigInteger())
-    profile_picture: Mapped[str] = mapped_column(String(100), nullable=True)
 
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, fullname={self.fullname!r})"
