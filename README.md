@@ -6,12 +6,12 @@ This repository contains a FastAPI application that allows users to register, up
 ## Endpoints
 
 1. **Health Check** (GET)
-   - Endpoint: `/health`
+   - Endpoint: `/api/v1/test`
    - Description: This endpoint can be used to check the health of the application. It will return a simple response indicating that the application is running.
 
 2. **Register Customer** (POST)
-   - Endpoint: `/register`
-   - Description: This endpoint allows users to register by providing their Full Name, Email, Password, Phone, and Profile Picture.
+   - Endpoint: `/api/v1/register-customer`
+   - Description: This endpoint allows users to register by providing their Full Name, Email, Password, Phone.
    - Request Body:
       ```json
       {
@@ -24,13 +24,13 @@ This repository contains a FastAPI application that allows users to register, up
    - Response: Upon successful registration, the endpoint will return a unique `user_id` for the user.
 
 3. **Upload Profile Picture** (POST)
-   - Endpoint: `/upload-profile-picture/{user_id}`
+   - Endpoint: `/profile-picture?user_id={user_id}`
    - Description: This endpoint is used to upload the profile picture for a registered user identified by their `user_id`.
    - Request Body: The profile picture should be sent as `multipart/form-data` with the key "file".
    - Response: If the profile picture upload is successful, it will return a message confirming the update.
 
 4. **Get User Details** (GET)
-   - Endpoint: `/user/{user_id}`
+   - Endpoint: `/get-user-details?user_id={user_id}`
    - Description: This endpoint is used to retrieve the details of a registered user by providing their `user_id`.
    - Response: The endpoint will return the user's details in the following format:
       ```json
@@ -46,12 +46,14 @@ This repository contains a FastAPI application that allows users to register, up
 
 To run the FastAPI application successfully, you need to create a `.env` file based on the provided `.env.example` file and fill in the required values for each variable. The variables you need to set in the `.env` file are:
 
-- `POSTGRES_URL`: The connection URL for the PostgreSQL database.
-- `MONGODB_URL`: The connection URL for the MongoDB database.
+- `POSTGRES_USERNAME`: The connection URL for the PostgreSQL database.
 - `POSTGRES_USER`: The username for the PostgreSQL database.
 - `POSTGRES_PASSWORD`: The password for the PostgreSQL database.
-- `MONGODB_USER`: The username for the MongoDB database.
-- `MONGODB_PASSWORD`: The password for the MongoDB database.
+- `POSTGRES_HOST`: The host for the PostgreSQL database.
+- `POSTGRES_PORT`: The post for the PostgreSQL database.
+- `POSTGRES_DATABASE_NAME`: The name for the PostgreSQL database.
+
+- `MONGODB_URL`: The Connection URL for the MongoDB database.
 
 
 Ensure that all the above variables are correctly filled in the `.env` file before running the FastAPI application.
