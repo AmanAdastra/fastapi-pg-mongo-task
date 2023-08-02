@@ -64,6 +64,8 @@ To run the FastAPI application, follow these steps:
 
 1. Install the required dependencies by running:
 
+`python version 3.11.4`
+
 `pip install -r requirements.txt`
 
 2. Run the FastAPI application using the following command:
