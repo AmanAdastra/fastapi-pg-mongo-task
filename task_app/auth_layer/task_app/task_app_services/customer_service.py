@@ -2,7 +2,7 @@ import base64
 import io
 from http import HTTPStatus
 from sqlalchemy import insert, select
-from fastapi import UploadFile
+from fastapi import UploadFile, HTTPException
 from database import engine
 from database import db
 from common_layer import constants
@@ -29,6 +29,8 @@ def health_check():
 def register_customer(request: UserRegisterRequest):
     logger.debug("Inside the Register Customer Function")
     try:
+        email_check_statement = select(User).where(User.email == request.email)
+
         request.password = Hash.get_password_hash(request.password)
         statement = insert(User).values(
             fullname=request.fullname,
@@ -37,11 +39,23 @@ def register_customer(request: UserRegisterRequest):
             password=request.password,
         )
         with engine.connect() as conn:
-            conn.execute(statement)
+            record_exist = conn.execute(email_check_statement)
+            if list(record_exist):
+                response = ResponseMessage(
+                    type=constants.HTTP_RESPONSE_FAILURE,
+                    data={constants.MESSAGE_KEY: constants.EMAIL_ALREADY_EXIST},
+                    status_code=HTTPStatus.NOT_ACCEPTABLE,
+                )
+                logger.debug(f"Email already used!")
+                return response
+            inserted_record = conn.execute(statement)
             conn.commit()
         response = ResponseMessage(
             type=constants.HTTP_RESPONSE_SUCCESS,
-            data={constants.MESSAGE_KEY: constants.USER_ADDED},
+            data={
+                constants.MESSAGE_KEY: constants.USER_ADDED,
+                constants.USER_ID_FIELD: (inserted_record.inserted_primary_key)[0],
+            },
             status_code=HTTPStatus.CREATED,
         )
         logger.debug("Returning from the Register Customer Function")
@@ -114,7 +128,7 @@ def get_user_details(user_id: int):
         if user_profile_index is None:
             response = ResponseMessage(
                 type=constants.HTTP_RESPONSE_FAILURE,
-                data={constants.MESSAGE_KEY: constants.USER_NOT_FOUND},
+                data={constants.MESSAGE_KEY: constants.PROFILE_PICTURE_NOT_UPLOADED},
                 status_code=HTTPStatus.NOT_FOUND,
             )
             return response

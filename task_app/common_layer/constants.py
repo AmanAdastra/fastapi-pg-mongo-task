@@ -23,9 +23,10 @@ USER_DATA = "user_data"
 USER_ADDED = "User Inserted"
 PROFILE_PICTURE_ADDED = "Profile Picture added successfully"
 HEALTH_CHECK = "Health Check Completed"
-USER_NOT_FOUND = "User not found, Please check the entered user id"
+PROFILE_PICTURE_NOT_UPLOADED = "Users profile picture is not uploaded, Please upload to get the user details"
 USER_DATA_FETCHED = "User data fetched successfully"
 PROCESS_FAILED = "Process Failed"
+EMAIL_ALREADY_EXIST = "Email already exist, Please try another!"
 
 
 # Database Model Names
